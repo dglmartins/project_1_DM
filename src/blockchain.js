@@ -206,7 +206,8 @@ class Blockchain {
         let errorLog = [];
         return new Promise(async (resolve) => {
             for (const block of self.chain) {
-                if (!block.validate()) {
+                const blockValid = block.validate().then((valid) => valid).catch((error) => error);
+                if (!blockValid) {
                     errorLog.push(`Invalid expected hash does not match at block of height: ${block.height}`)
                 }
                 if (block.height === 0) {
