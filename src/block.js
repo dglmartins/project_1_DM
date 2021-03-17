@@ -37,7 +37,7 @@ class Block {
      */
     validate() {
         let self = this;
-        return new Promise(async (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             const hashInBlock = self.hash;
             const expectedHash = SHA256(JSON.stringify(self));
             if (hashInBlock == expectedHash) {
